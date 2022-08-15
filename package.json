@@ -5,7 +5,10 @@
   "scripts": {
     "start:server": "cd projects/server && npm start",
     "start:client": "cd projects/client && npm start",
-    "setup": "cd projects/server && npm install && cd ../client && npm install"
+    "setup": "cd projects/server && npm install && cd ../client && npm install",
+    "postinstall": "if [ $CLIENT_ENV ]; then npm run postinstall-client; elif [ $SERVER_ENV ]; then npm run postinstall-server; else echo no environment detected, please set CLIENT_ENV or SERVER_ENV; fi",
+    "postinstall-client": "cd projects/client && npm install && npm run build",
+    "postinstall-server": "cd projects/server && npm install"
   },
   "author": "Zlash",
   "license": "ISC"
