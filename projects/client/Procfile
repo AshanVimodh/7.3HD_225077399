@@ -1,0 +1,1 @@
+web: cd projects/client && npm run start
