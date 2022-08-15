@@ -1,0 +1,1 @@
+web: cd projects/server && node src/server.js
