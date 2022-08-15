@@ -1,0 +1,12 @@
+{
+  "name": "capstone-project",
+  "version": "1.0.0",
+  "description": "CRUD application",
+  "scripts": {
+    "start:server": "cd projects/server && npm start",
+    "start:client": "cd projects/client && npm start",
+    "setup": "cd projects/server && npm install && cd ../client && npm install"
+  },
+  "author": "Zlash",
+  "license": "ISC"
+}
