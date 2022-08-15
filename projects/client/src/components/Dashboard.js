@@ -22,7 +22,6 @@ const Dashboard = () => {
       {username && (
         <div className="container mt-5">
           <h1>Welcome Back: {location.state.username}</h1>
-          <button>Get Users</button>
 
           <CreatePost params={null} editMode={false} />
           <PostListing />
