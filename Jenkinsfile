@@ -40,13 +40,15 @@ pipeline {
                 dir('projects/client') {
                     sh '''
                         npm ci --legacy-peer-deps
-                        npx jest --ci --reporters=default --reporters=jest-junit || true
+                        ls -l node_modules/jest-junit
+                        npm test
                     '''
                 }
                 dir('projects/server') {
                     sh '''
                         npm ci --legacy-peer-deps
-                        npx jest --ci --reporters=default --reporters=jest-junit || true
+                        ls -l node_modules/jest-junit
+                        npm test
                     '''
                 }
             }
