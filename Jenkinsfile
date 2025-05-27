@@ -37,11 +37,14 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'npm test'
+                sh '''
+                    npm install --save-dev jest
+                    npm test
+                '''
             }
             post {
                 always {
-                    junit '**/test-results/*.xml'  // Adjust to your test report path
+                    junit '**/test-results/*.xml'
                 }
             }
         }
