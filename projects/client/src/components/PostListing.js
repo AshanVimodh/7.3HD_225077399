@@ -185,10 +185,10 @@ const CreateTable = withStyles(styles)(MyTable);
 const PostListing = () => {
   const [postList, setPostList] = useState([]);
   const [open, setDialog] = useState(false);
-  const params = {
+  const params = React,useMemo(() => ({
     url: "/posts/listing",
     method: "get",
-  };
+  }), []);
   const history = useHistory();
   useEffect(() => {
     callAPi(params).then((result) => {
@@ -205,7 +205,7 @@ const PostListing = () => {
         }, 2500);
       }
     });
-  }, []);
+  }, [params]);
 
   const updatePost = (e) => {
     history.push(`/post/update/${e.rowData["_id"]}`);

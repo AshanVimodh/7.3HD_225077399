@@ -24,8 +24,8 @@ const Register = () => {
         username: name,
         email: email,
         password: password,
-      });
-      window.location.reload();
+      },{headers});
+      //window.location.reload();
       alert("Succesfully registered!")
       history.push("/");
     } catch (error) {
