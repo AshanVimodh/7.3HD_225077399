@@ -5,6 +5,7 @@ pipeline {
         MONGO_URI = credentials('mongo-uri')  // Jenkins secret for MongoDB connection
         //JWT_SECRET = credentials('jwt-secret')  // JWT secret
         NODE_ENV = 'production'
+        CLIENT_ENV = "true"
     }
 
     stages {
@@ -16,7 +17,7 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'CLIENT_ENV=true npm install'
+                sh 'npm install'
             }
         }
 
