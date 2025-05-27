@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import classNames from "classnames";
@@ -185,7 +185,7 @@ const CreateTable = withStyles(styles)(MyTable);
 const PostListing = () => {
   const [postList, setPostList] = useState([]);
   const [open, setDialog] = useState(false);
-  const params = React,useMemo(() => ({
+  const params = useMemo(() => ({
     url: "/posts/listing",
     method: "get",
   }), []);
