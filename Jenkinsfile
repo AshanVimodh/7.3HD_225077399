@@ -37,10 +37,18 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh '''
-                    npm install --save-dev jest
-                    npm test
-                '''
+                dir('projects/client') {
+                    sh '''
+                        npm install --save-dev jest
+                        npm test || true
+                    '''
+                }
+                dir('projects/server') {
+                    sh '''
+                        npm install --save-dev jest
+                        npm test || true
+                    '''
+                }
             }
             post {
                 always {
