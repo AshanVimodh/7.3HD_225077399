@@ -37,14 +37,14 @@ pipeline {
             }
         }
 
-        stage('Code Quality') {
-            steps {
-                // Example using SonarQube scanner
-                // withSonarQubeEnv('SonarQubeServer') {
-                //     sh "sonar-scanner -Dsonar.login=${SONAR_TOKEN}"
-                // }
-            }
-        }
+        // stage('Code Quality') {
+        //     steps {
+        //         // Example using SonarQube scanner
+        //         withSonarQubeEnv('SonarQubeServer') {
+        //             sh "sonar-scanner -Dsonar.login=${SONAR_TOKEN}"
+        //         }
+        //     }
+        // }
 
         stage('Security Scan') {
             steps {
@@ -53,35 +53,35 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
-            steps {
-                // Example: SSH deploy or container deploy
-                // sshagent(['deploy-ssh-key']) {
-                //     sh '''
-                //     ssh user@your-server "cd /path/to/app && git pull && npm install && pm2 restart all"
-                //     '''
-                // }
-            }
-        }
+        // stage('Deploy') {
+        //     steps {
+        //         // Example: SSH deploy or container deploy
+        //         sshagent(['deploy-ssh-key']) {
+        //             sh '''
+        //             ssh user@your-server "cd /path/to/app && git pull && npm install && pm2 restart all"
+        //             '''
+        //         }
+        //     }
+        // }
 
-        stage('Release') {
-            steps {
-                // Tag the git commit for release (optional)
-                // sh '''
-                // git config user.name "Jenkins"
-                // git config user.email "jenkins@yourdomain.com"
-                // git tag -a "release-${env.BUILD_NUMBER}" -m "Release build ${env.BUILD_NUMBER}"
-                // git push origin --tags
-                // '''
-            }
-        }
+        // stage('Release') {
+        //     steps {
+        //         Tag the git commit for release (optional)
+        //         sh '''
+        //         git config user.name "Jenkins"
+        //         git config user.email "jenkins@yourdomain.com"
+        //         git tag -a "release-${env.BUILD_NUMBER}" -m "Release build ${env.BUILD_NUMBER}"
+        //         git push origin --tags
+        //         '''
+        //     }
+        // }
 
-        stage('Monitoring') {
-            steps {
-                // Example: Trigger a monitoring API or send Slack notification
-                //sh 'curl -X POST https://monitoring-api.example.com/deployments -d "build=${env.BUILD_NUMBER}"'
-            }
-        }
+        // stage('Monitoring') {
+        //     steps {
+        //         // Example: Trigger a monitoring API or send Slack notification
+        //         sh 'curl -X POST https://monitoring-api.example.com/deployments -d "build=${env.BUILD_NUMBER}"'
+        //     }
+        // }
     }
 
     post {
