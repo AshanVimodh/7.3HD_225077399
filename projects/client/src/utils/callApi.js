@@ -1,4 +1,4 @@
-const callAPi = async ({ url, method, data }) => {
+export const callAPi = async ({ url, method, data }) => {
   try {
     const apiUrl = process.env.API_URL || "http://localhost:3000";
     const newUrl = apiUrl + url;
