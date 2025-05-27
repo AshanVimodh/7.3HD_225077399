@@ -28,10 +28,10 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh '''
-                    cd projects/client
-                    npm run build
-                '''
+                dir('projects/client') {
+                    sh 'npm ci --legacy-peer-deps'
+                    sh 'npm run build'
+                }
             }
         }
 
