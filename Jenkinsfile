@@ -40,19 +40,19 @@ pipeline {
                 dir('projects/client') {
                     sh '''
                         npm ci --legacy-peer-deps
-                        npm test || true
+                        npx jest --ci --reporters=default --reporters=jest-junit || true
                     '''
                 }
                 dir('projects/server') {
                     sh '''
                         npm ci --legacy-peer-deps
-                        npm test || true
+                        npx jest --ci --reporters=default --reporters=jest-junit || true
                     '''
                 }
             }
             post {
                 always {
-                    junit '**/test-results/*.xml'
+                    junit '**/junit.xml'
                 }
             }
         }
