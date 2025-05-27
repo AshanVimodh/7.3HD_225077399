@@ -19,9 +19,9 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 sh '''
-                    npm ci
-                    cd projects/client && npm ci
-                    cd ../server && npm ci
+                    npm ci --legacy-peer-deps
+                    cd projects/client && npm ci --legacy-peer-deps
+                    cd ../server && npm ci --legacy-peer-deps
                 '''
             }
         }
