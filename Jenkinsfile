@@ -39,13 +39,13 @@ pipeline {
             steps {
                 dir('projects/client') {
                     sh '''
-                        npm install --save-dev jest
+                        npm ci --legacy-peer-deps
                         npm test || true
                     '''
                 }
                 dir('projects/server') {
                     sh '''
-                        npm install --save-dev jest
+                        npm ci --legacy-peer-deps
                         npm test || true
                     '''
                 }
