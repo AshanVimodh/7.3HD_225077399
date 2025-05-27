@@ -6,6 +6,7 @@ pipeline {
         // JWT_SECRET = credentials('jwt-secret')  // Uncomment if needed
         NODE_ENV = 'production'
         CLIENT_ENV = "true"
+        NODE_OPTIONS = '--openssl-legacy-provider'
     }
 
     stages {
@@ -28,8 +29,6 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
-                    export NODE_OPTIONS=--openssl-legacy-provider
-                    export CLIENT_ENV=true
                     cd projects/client
                     npm run build
                 '''
