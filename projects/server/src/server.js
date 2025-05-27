@@ -24,7 +24,7 @@ app.use("/posts", posts);
 app.use(errors.errorHandler);
 
 // MongoDB connection, success and error event responses
-const uri = process.env.MONGODB_URI || "mongodb://localhost:27017/capstone?retryWrites=true&w=majority";
+const uri = process.env.MONGODB_URI || "mongodb+srv://PSYCh0:a3lTl4BYPai8tbQ6@cluster0.xqemzrx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 mongoose.connect(uri, {
   useCreateIndex: true,
