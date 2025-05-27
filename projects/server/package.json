@@ -8,7 +8,7 @@
   "jest": {
     "reporters": [
       "default",
-      [ "jest-junit", { "outputDirectory": ".", "outputName": "junit.xml" } ]
+      [ "jest-junit", { "outputDirectory": "./reports", "outputName": "junit.xml" } ]
     ]
   },
   "author": "Zlash",

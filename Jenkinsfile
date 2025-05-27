@@ -19,9 +19,9 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 sh '''
-                    npm ci --legacy-peer-deps
-                    cd projects/client && npm ci --legacy-peer-deps
-                    cd ../server && npm ci --legacy-peer-deps
+                    npm ci --include=dev --legacy-peer-deps
+                    cd projects/client && npm ci --include=dev --legacy-peer-deps
+                    cd ../server && npm ci --include=dev --legacy-peer-deps
                 '''
             }
         }
@@ -29,7 +29,6 @@ pipeline {
         stage('Build') {
             steps {
                 dir('projects/client') {
-                    sh 'npm ci --legacy-peer-deps'
                     sh 'npm run build'
                 }
             }
@@ -39,15 +38,11 @@ pipeline {
             steps {
                 dir('projects/client') {
                     sh '''
-                        npm ci --legacy-peer-deps
-                        ls -l node_modules/jest-junit
                         npm test
                     '''
                 }
                 dir('projects/server') {
                     sh '''
-                        npm ci --legacy-peer-deps
-                        ls -l node_modules/jest-junit
                         npm test
                     '''
                 }
