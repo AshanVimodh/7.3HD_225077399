@@ -23,7 +23,11 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'npm run build'
+                sh '''
+                export NODE_OPTIONS=--openssl-legacy-provider
+                cd projects/client
+                npm run build
+                '''
             }
         }
 
