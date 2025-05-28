@@ -62,6 +62,14 @@ pipeline {
 
         }
 
+        stage('Code Quality - SonarQube') {
+            steps {
+                withSonarQubeEnv('SonarQube 01') {
+                    sh 'sonar-scanner'
+                }
+            }
+        }
+
         stage('Security Scan') {
             steps {
                 sh 'npm audit --audit-level=high'
