@@ -21,13 +21,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom"
-  },
-  "jest": {
-    "reporters": [
-      "default",
-      [ "jest-junit", { "outputDirectory": "./reports", "outputName": "junit.xml" } ]
-    ]
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": [
@@ -48,7 +42,6 @@
     ]
   },
   "devDependencies": {
-    "@babel/parser": "^7.27.3",
-    "jest-junit": "^16.0.0"
+    "@babel/parser": "^7.27.3"
   }
 }
