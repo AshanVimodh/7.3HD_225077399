@@ -49,9 +49,17 @@ pipeline {
             }
             post {
                 always {
-                    junit '**/junit.xml'
+                    script {
+                        def reportExists = fileExists '**/junit.xml'
+                        if (reportExists) {
+                            junit '**/junit.xml'
+                        } else {
+                            echo "No test results found to publish."
+                        }
+                    }
                 }
             }
+
         }
 
         stage('Security Scan') {
