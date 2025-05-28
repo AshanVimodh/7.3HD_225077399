@@ -2,8 +2,7 @@ pipeline {
     agent any
 
     environment {
-        MONGO_URI = credentials('mongo-uri')  // Jenkins secret for MongoDB connection
-        // JWT_SECRET = credentials('jwt-secret')  // Uncomment if needed
+        MONGO_URI = credentials('mongo-uri')
         NODE_ENV = 'production'
         CLIENT_ENV = "true"
         NODE_OPTIONS = '--openssl-legacy-provider'
@@ -59,7 +58,6 @@ pipeline {
                     }
                 }
             }
-
         }
 
         stage('Code Quality - SonarQube') {
@@ -77,43 +75,31 @@ pipeline {
             }
         }
 
-        // Uncomment and configure when ready
-        // stage('Deploy') {
-        //     steps {
-        //         sshagent(['deploy-ssh-key']) {
-        //             sh '''
-        //             ssh user@your-server "cd /path/to/app && git pull && npm ci && pm2 restart all"
-        //             '''
-        //         }
-        //     }
-        // }
+        stage('Deploy') {
+            steps {
+                echo 'Deploy stage.'
+            }
+        }
 
-        // stage('Release') {
-        //     steps {
-        //         sh '''
-        //         git config user.name "Jenkins"
-        //         git config user.email "jenkins@yourdomain.com"
-        //         git tag -a "release-${env.BUILD_NUMBER}" -m "Release build ${env.BUILD_NUMBER}"
-        //         git push origin --tags
-        //         '''
-        //     }
-        // }
+        stage('Release') {
+            steps {
+                echo 'Release stage.'
+            }
+        }
 
-        // stage('Monitoring') {
-        //     steps {
-        //         sh 'curl -X POST https://monitoring-api.example.com/deployments -d "build=${env.BUILD_NUMBER}"'
-        //     }
-        // }
+        stage('Monitoring') {
+            steps {
+                echo 'Monitoring stage.'
+            }
+        }
     }
 
     post {
         success {
             echo 'Pipeline completed successfully!'
-            // Add Slack/Discord notifications here if needed
         }
         failure {
             echo 'Pipeline failed!'
-            // Add failure notifications here
         }
     }
 }
