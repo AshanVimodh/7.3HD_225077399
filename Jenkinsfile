@@ -65,7 +65,8 @@ pipeline {
         stage('Code Quality - SonarQube') {
             steps {
                 withSonarQubeEnv('SonarQube 01') {
-                    sh 'sonar-scanner'
+                    tool name: 'SonarScanner CLI'
+                    sh "${tool 'SonarScanner CLI'}/bin/sonar-scanner"
                 }
             }
         }
